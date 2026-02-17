@@ -4,9 +4,9 @@
   "name": "Stackr API",
   "description": "Documentação da API Stackr - Hospede, gerencie e faça backup dos seus bots",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#8b5cf6",
+    "light": "#a78bfa",
+    "dark": "#7c3aed"
   },
   "favicon": "/favicon.svg",
   "openapi": "api-reference/stackr-openapi.json",
