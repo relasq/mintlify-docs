@@ -15,4 +15,13 @@ curl -X GET "https://api.stackr.lat/backups" \
 
 ## Resposta
 
-Array de objetos com informações de cada backup (id, botId, createdAt, size, etc).
+```json
+[
+  {
+    "id": "backup-uuid-1234",
+    "botName": "Meu Bot",
+    "createdAt": "2024-01-01T12:00:00Z",
+    "sizeBytes": 5000000
+  }
+]
+```

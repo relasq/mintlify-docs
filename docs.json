@@ -1,6 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
+  "mode": "dark",
   "name": "Stackr API",
   "description": "Documentação da API Stackr - Hospede, gerencie e faça backup dos seus bots",
   "colors": {

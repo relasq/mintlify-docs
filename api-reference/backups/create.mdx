@@ -21,4 +21,9 @@ curl -X POST "https://api.stackr.lat/bots/bot_abc123/backup" \
 
 ## Resposta
 
-Retorna os dados do backup criado, incluindo o `id` para download posterior.
+```json
+{
+  "backupId": "backup-uuid-1234",
+  "fileName": "backup-bot-2024.zip"
+}
+```
