@@ -9,7 +9,7 @@
     "light": "#a78bfa",
     "dark": "#7c3aed"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/stackr-logo2.svg",
   "openapi": "api-reference/stackr-openapi.json",
   "navigation": {
     "tabs": [
@@ -79,8 +79,8 @@
     }
   },
   "logo": {
-    "light": "/logo/stackr-logo.svg",
-    "dark": "/logo/stackr-logo.svg"
+    "light": "/logo/stackr-logo2.svg",
+    "dark": "/logo/stackr-logo2.svg"
   },
   "navbar": {
     "links": [],
