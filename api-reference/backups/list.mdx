@@ -1,0 +1,18 @@
+---
+title: "Listar backups"
+description: "Lista todos os backups disponíveis"
+openapi: GET /backups
+---
+
+Lista todos os backups disponíveis do usuário.
+
+## Exemplo cURL
+
+```bash
+curl -X GET "https://api.stackr.lat/backups" \
+  -H "Authorization: Bearer SEU_API_TOKEN"
+```
+
+## Resposta
+
+Array de objetos com informações de cada backup (id, botId, createdAt, size, etc).

@@ -1,68 +1,67 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Stackr API",
+  "description": "Documentação da API Stackr - Hospede, gerencie e faça backup dos seus bots",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#8b5cf6",
+    "light": "#a78bfa",
+    "dark": "#7c3aed"
   },
   "favicon": "/favicon.svg",
+  "openapi": "api-reference/stackr-openapi.json",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Início",
         "groups": [
           {
-            "group": "Getting started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
+            "group": "Introdução",
+            "pages": ["index", "quickstart"]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "API Reference",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Autenticação",
+            "pages": ["api-reference/authentication"]
+          },
+          {
+            "group": "Hospedagem e Upload",
+            "pages": ["api-reference/bots/upload"]
+          },
+          {
+            "group": "Controle de Bots",
             "pages": [
-              "api-reference/introduction"
+              "api-reference/bots/list",
+              "api-reference/bots/details",
+              "api-reference/bots/start",
+              "api-reference/bots/stop",
+              "api-reference/bots/restart",
+              "api-reference/bots/delete",
+              "api-reference/bots/commit",
+              "api-reference/bots/logs"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Configurações e Arquivos",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api-reference/bots/settings",
+              "api-reference/bots/files-list",
+              "api-reference/bots/files-read",
+              "api-reference/bots/files-write",
+              "api-reference/bots/files-mkdir",
+              "api-reference/bots/files-delete"
+            ]
+          },
+          {
+            "group": "Backups",
+            "pages": [
+              "api-reference/backups/create",
+              "api-reference/backups/list",
+              "api-reference/backups/download"
             ]
           }
         ]
@@ -71,14 +70,9 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "API Base URL",
+          "href": "https://api.stackr.lat",
+          "icon": "link"
         }
       ]
     }
@@ -88,35 +82,17 @@
     "dark": "/logo/dark.svg"
   },
   "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
+    "links": [],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://stackr.lat"
     }
   },
   "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+    "options": ["copy", "view", "chatgpt", "claude", "perplexity", "cursor", "vscode"]
   },
   "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
+    "socials": {}
   }
 }

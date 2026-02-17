@@ -1,0 +1,25 @@
+---
+title: "Baixar backup"
+description: "Faz o download do arquivo de backup"
+openapi: GET /backups/{id}/download
+---
+
+Faz o download do arquivo de backup.
+
+## Parâmetros de path
+
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-----------|
+| `id` | string | ID único do backup |
+
+## Exemplo cURL
+
+```bash
+curl -X GET "https://api.stackr.lat/backups/backup_xyz789/download" \
+  -H "Authorization: Bearer SEU_API_TOKEN" \
+  -o backup.zip
+```
+
+## Resposta
+
+Retorna o arquivo de backup como download (application/zip).

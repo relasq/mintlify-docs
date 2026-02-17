@@ -1,0 +1,18 @@
+---
+title: "Listar bots"
+description: "Retorna todos os bots do usuário"
+openapi: GET /bots
+---
+
+Retorna todos os bots do usuário autenticado.
+
+## Exemplo cURL
+
+```bash
+curl -X GET "https://api.stackr.lat/bots" \
+  -H "Authorization: Bearer SEU_API_TOKEN"
+```
+
+## Resposta
+
+Array de objetos com informações de cada bot (id, nome, status, linguagem, memória, etc).

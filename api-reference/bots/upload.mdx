@@ -1,0 +1,33 @@
+---
+title: "Upload de novo bot"
+description: "Envia um arquivo .zip contendo o código do bot para ser hospedado"
+openapi: POST /bots/upload
+---
+
+Envia um arquivo .zip contendo o código do bot para ser hospedado na Stackr.
+
+## Body (multipart/form-data)
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|-----------|
+| `file` | Arquivo | Sim | Arquivo .zip (máx 50MB) |
+| `botName` | string | Não | Nome do bot |
+| `language` | string | Não | Linguagem do bot (ex: nodejs, python) |
+| `command` | string | Não | Comando de inicialização |
+| `memory` | string | Não | Limite de memória: 100MB \| 256MB \| 512MB |
+
+## Exemplo cURL
+
+```bash
+curl -X POST "https://api.stackr.lat/bots/upload" \
+  -H "Authorization: Bearer SEU_API_TOKEN" \
+  -F "file=@meu-bot.zip" \
+  -F "botName=Meu Bot Discord" \
+  -F "language=nodejs" \
+  -F "command=npm start" \
+  -F "memory=256MB"
+```
+
+## Resposta de sucesso
+
+Retorna os dados do bot criado, incluindo o `id` necessário para operações subsequentes.

@@ -1,0 +1,34 @@
+---
+title: "Autenticação"
+description: "Como autenticar requisições à API Stackr"
+---
+
+## Visão geral
+
+Todas as rotas protegidas da Stackr API exigem autenticação via Bearer Token. Você obtém o token no dashboard da Stackr.
+
+## Header de autorização
+
+Envie o token no header `Authorization` em todas as requisições:
+
+```
+Authorization: Bearer <SEU_API_TOKEN>
+```
+
+## Exemplo com cURL
+
+```bash
+curl -X GET "https://api.stackr.lat/bots" \
+  -H "Authorization: Bearer seu_token_aqui"
+```
+
+## Respostas de erro
+
+| Código | Descrição |
+|--------|-----------|
+| 401 | Token ausente ou inválido. Verifique o header `Authorization`. |
+| 403 | Token sem permissão para acessar o recurso. |
+
+<Warning>
+Nunca exponha seu API Token em código cliente ou repositórios públicos. Use variáveis de ambiente.
+</Warning>

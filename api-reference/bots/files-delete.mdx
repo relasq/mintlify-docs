@@ -1,0 +1,28 @@
+---
+title: "Deletar arquivo"
+description: "Remove um arquivo ou pasta do sistema de arquivos do bot"
+openapi: POST /bots/{id}/files/delete
+---
+
+Remove um arquivo ou pasta do sistema de arquivos do bot.
+
+## Parâmetros de path
+
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-----------|
+| `id` | string | ID único do bot |
+
+## Body (JSON)
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|-----------|
+| `path` | string | Sim | Caminho do arquivo ou pasta a remover |
+
+## Exemplo cURL
+
+```bash
+curl -X POST "https://api.stackr.lat/bots/bot_abc123/files/delete" \
+  -H "Authorization: Bearer SEU_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"path": "/app/temp/file.txt"}'
+```

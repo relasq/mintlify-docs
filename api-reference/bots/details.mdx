@@ -1,0 +1,20 @@
+---
+title: "Detalhes do bot"
+description: "Retorna informações detalhadas de um bot específico"
+openapi: GET /bots/{id}
+---
+
+Retorna informações detalhadas de um bot específico.
+
+## Parâmetros de path
+
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-----------|
+| `id` | string | ID único do bot |
+
+## Exemplo cURL
+
+```bash
+curl -X GET "https://api.stackr.lat/bots/bot_abc123" \
+  -H "Authorization: Bearer SEU_API_TOKEN"
+```
