@@ -1,0 +1,27 @@
+---
+title: "Commit/atualizar código"
+description: "Atualiza o código fonte do bot enviando um novo .zip"
+openapi: POST /bots/{id}/commit
+---
+
+Atualiza o código fonte do bot enviando um novo arquivo .zip. Substitui o código anterior.
+
+## Parâmetros de path
+
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-----------|
+| `id` | string | ID único do bot |
+
+## Body (multipart/form-data)
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|-----------|
+| `file` | Arquivo | Sim | Arquivo .zip com o novo código |
+
+## Exemplo cURL
+
+```bash
+curl -X POST "https://api.stackr.lat/bots/bot_abc123/commit" \
+  -H "Authorization: Bearer SEU_API_TOKEN" \
+  -F "file=@nova-versao.zip"
+```

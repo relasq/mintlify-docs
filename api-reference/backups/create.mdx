@@ -1,0 +1,24 @@
+---
+title: "Criar backup"
+description: "Cria um backup do estado atual do bot"
+openapi: POST /bots/{id}/backup
+---
+
+Cria um backup do estado atual do bot, incluindo código e dados.
+
+## Parâmetros de path
+
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-----------|
+| `id` | string | ID único do bot |
+
+## Exemplo cURL
+
+```bash
+curl -X POST "https://api.stackr.lat/bots/bot_abc123/backup" \
+  -H "Authorization: Bearer SEU_API_TOKEN"
+```
+
+## Resposta
+
+Retorna os dados do backup criado, incluindo o `id` para download posterior.
