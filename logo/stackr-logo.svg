@@ -19,3 +19,18 @@
 </linearGradient>
 </defs>
 </svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Geometric abstract angular "S" — stacked parallelogram layers -->
+  <g fill="white">
+    <!-- Top bar -->
+    <polygon points="40,30 160,30 140,65 20,65" />
+    <!-- Middle bar -->
+    <polygon points="60,82 180,82 160,117 40,117" />
+    <!-- Bottom bar -->
+    <polygon points="40,134 160,134 140,169 20,169" />
+    <!-- Top-right connector -->
+    <polygon points="140,65 160,65 180,82 160,82" />
+    <!-- Bottom-left connector -->
+    <polygon points="20,117 40,117 40,134 20,134" />
+  </g>
+</svg>
