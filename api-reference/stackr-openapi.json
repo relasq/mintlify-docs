@@ -416,6 +416,169 @@
           "404": { "description": "Backup não encontrado" }
         }
       }
+    },
+    "/auth/stats": {
+      "get": {
+        "summary": "Estatísticas públicas",
+        "description": "Retorna contagem de usuários e deploys. Não requer autenticação.",
+        "security": [],
+        "responses": { "200": { "description": "Estatísticas" } }
+      }
+    },
+    "/settings": {
+      "get": {
+        "summary": "Obter perfil",
+        "description": "Retorna ID do dono e nickname.",
+        "security": [{"bearerAuth": []}],
+        "responses": { "200": { "description": "Perfil" }, "401": { "description": "Não autorizado" } }
+      },
+      "put": {
+        "summary": "Atualizar perfil",
+        "description": "Atualiza nickname.",
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "type": "object", "properties": { "nickname": { "type": "string" } } }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Perfil atualizado" }, "401": { "description": "Não autorizado" } }
+      }
+    },
+    "/bots/{id}/stats": {
+      "get": {
+        "summary": "Estatísticas em tempo real",
+        "description": "CPU, RAM e rede.",
+        "security": [{"bearerAuth": []}],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Métricas" }, "401": { "description": "Não autorizado" }, "404": { "description": "Bot não encontrado" } }
+      }
+    },
+    "/bots/{id}/rebuild": {
+      "post": {
+        "summary": "Reconstruir bot",
+        "description": "Reconstrói o container do zero.",
+        "security": [{"bearerAuth": []}],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Rebuilding" }, "401": { "description": "Não autorizado" }, "404": { "description": "Bot não encontrado" } }
+      }
+    },
+    "/bots/{id}/oom-notified": {
+      "post": {
+        "summary": "Confirmar notificação OOM",
+        "description": "Marca aviso de memória como visualizado.",
+        "security": [{"bearerAuth": []}],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Confirmado" }, "401": { "description": "Não autorizado" }, "404": { "description": "Bot não encontrado" } }
+      }
+    },
+    "/bots/{id}/files/rename": {
+      "put": {
+        "summary": "Renomear arquivo",
+        "description": "Renomeia arquivo ou pasta.",
+        "security": [{"bearerAuth": []}],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "type": "object", "required": ["oldPath", "newPath"], "properties": { "oldPath": { "type": "string" }, "newPath": { "type": "string" } } }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Renomeado" }, "401": { "description": "Não autorizado" }, "404": { "description": "Bot não encontrado" } }
+      }
+    },
+    "/plans": {
+      "get": {
+        "summary": "Ver plano atual",
+        "description": "Retorna plano com memória e expiração.",
+        "security": [{"bearerAuth": []}],
+        "responses": { "200": { "description": "Plano" }, "401": { "description": "Não autorizado" } }
+      }
+    },
+    "/plans/expiring": {
+      "get": {
+        "summary": "Planos expirando",
+        "description": "Planos vencendo em breve.",
+        "security": [{"bearerAuth": []}],
+        "responses": { "200": { "description": "Lista" }, "401": { "description": "Não autorizado" } }
+      }
+    },
+    "/plans/purchase": {
+      "post": {
+        "summary": "Comprar plano",
+        "description": "Inicia compra com PIX.",
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["memoryMb", "duration", "payerName", "payerDocument"],
+                "properties": {
+                  "memoryMb": { "type": "integer" },
+                  "duration": { "type": "string", "enum": ["monthly", "yearly"] },
+                  "payerName": { "type": "string" },
+                  "payerDocument": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Dados PIX" }, "401": { "description": "Não autorizado" } }
+      }
+    },
+    "/plans/check": {
+      "post": {
+        "summary": "Verificar pagamento",
+        "description": "Verifica status do PIX.",
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "type": "object", "required": ["transactionId"], "properties": { "transactionId": { "type": "string" } } }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Status" }, "401": { "description": "Não autorizado" } }
+      }
+    },
+    "/plans/upgrade": {
+      "post": {
+        "summary": "Upgrade de plano",
+        "description": "Adiciona memória ao plano.",
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "type": "object", "required": ["additionalMemoryMb", "duration"], "properties": { "additionalMemoryMb": { "type": "integer" }, "duration": { "type": "string", "enum": ["monthly", "yearly"] } } }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Transação PIX" }, "401": { "description": "Não autorizado" } }
+      }
+    },
+    "/plans/purchases": {
+      "get": {
+        "summary": "Listar compras",
+        "description": "Histórico de compras.",
+        "security": [{"bearerAuth": []}],
+        "responses": { "200": { "description": "Histórico" }, "401": { "description": "Não autorizado" } }
+      }
+    },
+    "/plans/purchases/{id}": {
+      "get": {
+        "summary": "Detalhes da compra",
+        "description": "Detalhes de uma compra.",
+        "security": [{"bearerAuth": []}],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Detalhes" }, "401": { "description": "Não autorizado" }, "404": { "description": "Compra não encontrada" } }
+      }
     }
   }
 }

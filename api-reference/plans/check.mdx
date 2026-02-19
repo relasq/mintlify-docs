@@ -1,0 +1,26 @@
+---
+title: "Verificar pagamento"
+description: "Verifica status de um pagamento PIX"
+openapi: POST /plans/check
+---
+
+Verifica se um pagamento PIX foi confirmado.
+
+## Body (JSON)
+
+| Campo | Tipo | Descrição |
+|-------|------|-----------|
+| `transactionId` | string | ID da transação retornado em `/plans/purchase` |
+
+## Exemplo cURL
+
+```bash
+curl -X POST "https://api.stackr.lat/plans/check" \
+  -H "Authorization: Bearer SEU_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"transactionId": "txn_abc123"}'
+```
+
+## Resposta
+
+Retorna o status do pagamento (aprovado, pendente ou expirado).

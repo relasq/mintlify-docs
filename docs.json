@@ -10,6 +10,7 @@
     "dark": "#7c3aed"
   },
   "favicon": "/favicon.svg",
+  "css": "custom.css",
   "openapi": "api-reference/stackr-openapi.json",
   "navigation": {
     "tabs": [
@@ -26,8 +27,13 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "Autenticação",
-            "pages": ["api-reference/authentication"]
+            "group": "Autenticação e Perfil",
+            "pages": [
+              "api-reference/authentication",
+              "api-reference/auth/stats",
+              "api-reference/auth/profile",
+              "api-reference/auth/profile-update"
+            ]
           },
           {
             "group": "Hospedagem e Upload",
@@ -38,11 +44,14 @@
             "pages": [
               "api-reference/bots/list",
               "api-reference/bots/details",
+              "api-reference/bots/stats",
               "api-reference/bots/start",
               "api-reference/bots/stop",
               "api-reference/bots/restart",
+              "api-reference/bots/rebuild",
               "api-reference/bots/delete",
               "api-reference/bots/commit",
+              "api-reference/bots/oom-notified",
               "api-reference/bots/logs"
             ]
           },
@@ -53,6 +62,7 @@
               "api-reference/bots/files-list",
               "api-reference/bots/files-read",
               "api-reference/bots/files-write",
+              "api-reference/bots/files-rename",
               "api-reference/bots/files-mkdir",
               "api-reference/bots/files-delete"
             ]
@@ -63,6 +73,18 @@
               "api-reference/backups/create",
               "api-reference/backups/list",
               "api-reference/backups/download"
+            ]
+          },
+          {
+            "group": "Planos e Pagamentos",
+            "pages": [
+              "api-reference/plans/current",
+              "api-reference/plans/expiring",
+              "api-reference/plans/purchase",
+              "api-reference/plans/check",
+              "api-reference/plans/upgrade",
+              "api-reference/plans/purchases",
+              "api-reference/plans/purchase-detail"
             ]
           }
         ]

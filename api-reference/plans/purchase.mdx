@@ -1,0 +1,34 @@
+---
+title: "Comprar plano"
+description: "Inicia a compra de um plano com PIX"
+openapi: POST /plans/purchase
+---
+
+Comprar um novo plano. Retorna dados do PIX para pagamento (QR Code e copia e cola).
+
+## Body (JSON)
+
+| Campo | Tipo | Descrição |
+|-------|------|-----------|
+| `memoryMb` | integer | Memória em MB (ex: 512) |
+| `duration` | string | Período: `monthly` ou `yearly` |
+| `payerName` | string | Nome do pagador |
+| `payerDocument` | string | CPF/CNPJ do pagador |
+
+## Exemplo cURL
+
+```bash
+curl -X POST "https://api.stackr.lat/plans/purchase" \
+  -H "Authorization: Bearer SEU_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "memoryMb": 512,
+    "duration": "monthly",
+    "payerName": "João Silva",
+    "payerDocument": "12345678900"
+  }'
+```
+
+## Resposta
+
+Retorna dados do PIX: `qrcode`, `copyPaste` e `transactionId` para verificação do pagamento.

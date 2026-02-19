@@ -1,0 +1,24 @@
+---
+title: "Detalhes da compra"
+description: "Detalhes de uma compra específica"
+openapi: GET /plans/purchases/{id}
+---
+
+Retorna os detalhes de uma compra específica pelo ID.
+
+## Parâmetros de path
+
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-----------|
+| `id` | string | ID da compra |
+
+## Exemplo cURL
+
+```bash
+curl -X GET "https://api.stackr.lat/plans/purchases/pur_abc123" \
+  -H "Authorization: Bearer SEU_API_TOKEN"
+```
+
+## Resposta
+
+Objeto com detalhes da compra (valor, memória, status, data).

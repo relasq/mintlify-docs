@@ -1,0 +1,32 @@
+---
+title: "Atualizar perfil"
+description: "Atualiza o nickname do usuário"
+openapi: PUT /settings
+---
+
+Atualiza as configurações do perfil do usuário.
+
+## Body (JSON)
+
+| Campo | Tipo | Descrição |
+|-------|------|-----------|
+| `nickname` | string | Novo nickname |
+
+## Exemplo cURL
+
+```bash
+curl -X PUT "https://api.stackr.lat/settings" \
+  -H "Authorization: Bearer SEU_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"nickname": "NovoNick"}'
+```
+
+## Resposta
+
+```json
+{
+  "id": "usr_abc123",
+  "ownerId": "usr_abc123",
+  "nickname": "NovoNick"
+}
+```

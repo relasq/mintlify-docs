@@ -1,0 +1,23 @@
+---
+title: "Obter perfil"
+description: "Retorna o ID do dono e nickname"
+openapi: GET /settings
+---
+
+Retorna as configurações do perfil do usuário autenticado.
+
+## Exemplo cURL
+
+```bash
+curl -X GET "https://api.stackr.lat/settings" \
+  -H "Authorization: Bearer SEU_API_TOKEN"
+```
+
+## Resposta
+
+```json
+{
+  "ownerId": "usr_abc123",
+  "nickname": "User123"
+}
+```

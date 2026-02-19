@@ -1,0 +1,24 @@
+---
+title: "Ver plano atual"
+description: "Retorna informações do plano de assinatura"
+openapi: GET /plans
+---
+
+Retorna o plano atual do usuário com memória total e data de expiração.
+
+## Exemplo cURL
+
+```bash
+curl -X GET "https://api.stackr.lat/plans" \
+  -H "Authorization: Bearer SEU_API_TOKEN"
+```
+
+## Resposta
+
+```json
+{
+  "ownerId": "usr_abc123",
+  "totalMemoryMb": 1024,
+  "expiresAt": "2024-12-31T23:59:59Z"
+}
+```

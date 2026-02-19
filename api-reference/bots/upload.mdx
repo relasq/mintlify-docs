@@ -14,7 +14,7 @@ Envia um arquivo .zip contendo o código do bot para ser hospedado na Stackr.
 | `botName` | string | Não | Nome do bot |
 | `language` | string | Não | Linguagem do bot (ex: nodejs, python) |
 | `command` | string | Não | Comando de inicialização |
-| `memory` | string | Não | Limite de memória: 100MB \| 256MB \| 512MB |
+| `memory` | string | Não | Limite de memória: 100, 256, 512, 1024, etc. |
 
 ## Exemplo cURL
 
@@ -25,7 +25,7 @@ curl -X POST "https://api.stackr.lat/bots/upload" \
   -F "botName=Meu Bot Discord" \
   -F "language=nodejs" \
   -F "command=npm start" \
-  -F "memory=256MB"
+  -F "memory=256"
 ```
 
 ## Resposta de sucesso
@@ -33,6 +33,7 @@ curl -X POST "https://api.stackr.lat/bots/upload" \
 ```json
 {
   "botId": "123e4567-e89b-12d3-a456-426614174000",
-  "message": "Bot uploaded successfully. Building..."
+  "message": "Bot uploaded successfully. Building...",
+  "status": "RUNNING"
 }
 ```

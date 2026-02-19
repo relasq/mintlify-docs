@@ -1,0 +1,37 @@
+---
+title: "Renomear arquivo"
+description: "Renomeia um arquivo ou pasta"
+openapi: PUT /bots/{id}/files/rename
+---
+
+Renomeia um arquivo ou pasta no sistema de arquivos do bot.
+
+## Parâmetros de path
+
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-----------|
+| `id` | string | ID único do bot |
+
+## Body (JSON)
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|-----------|
+| `oldPath` | string | Sim | Caminho atual do arquivo |
+| `newPath` | string | Sim | Novo caminho/nome |
+
+## Exemplo cURL
+
+```bash
+curl -X PUT "https://api.stackr.lat/bots/bot_abc123/files/rename" \
+  -H "Authorization: Bearer SEU_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"oldPath": "/app/oldname.js", "newPath": "/app/newname.js"}'
+```
+
+## Resposta
+
+```json
+{
+  "success": true
+}
+```

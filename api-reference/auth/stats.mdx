@@ -1,0 +1,23 @@
+---
+title: "Estatísticas públicas"
+description: "Retorna contagem de usuários e deploys (público)"
+openapi: GET /auth/stats
+---
+
+Retorna estatísticas públicas da plataforma. Não requer autenticação.
+
+## Exemplo cURL
+
+```bash
+curl -X GET "https://api.stackr.lat/auth/stats"
+```
+
+## Resposta
+
+```json
+{
+  "users": 150,
+  "deploys": 500,
+  "uptime": 99
+}
+```
