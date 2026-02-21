@@ -1,6 +1,6 @@
 # Stackr API - Documentação
 
-Documentação da API Stackr para hospedar, gerenciar e fazer backup dos seus bots.
+Documentação da API Stackr para hospedar, gerenciar e fazer backup dos seus apps.
 
 ## Desenvolvimento local
 

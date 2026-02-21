@@ -26,7 +26,7 @@
       }
     },
     "schemas": {
-      "Bot": {
+      "App": {
         "type": "object",
         "properties": {
           "id": { "type": "string", "description": "ID único do app" },
@@ -43,7 +43,7 @@
         "type": "object",
         "properties": {
           "id": { "type": "string", "description": "ID do backup" },
-          "botId": { "type": "string", "description": "ID do backup" },
+          "appId": { "type": "string", "description": "ID do backup" },
           "createdAt": { "type": "string", "format": "date-time" },
           "size": { "type": "integer", "description": "Tamanho em bytes" }
         }
@@ -69,7 +69,7 @@
                     "format": "binary",
                     "description": "Arquivo .zip (Obrigatório, máx 50MB)"
                   },
-                  "botName": {
+                  "appName": {
                     "type": "string",
                     "description": "Nome do app (Opcional)"
                   },

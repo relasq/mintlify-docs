@@ -11,7 +11,7 @@ Envia um arquivo .zip contendo o código do app para ser hospedado na Stackr.
 | Campo | Tipo | Obrigatório | Descrição |
 |-------|------|-------------|-----------|
 | `file` | Arquivo | Sim | Arquivo .zip (máx 50MB) |
-| `botName` | string | Não | Nome do app |
+| `appName` | string | Não | Nome do app |
 | `language` | string | Não | Linguagem (ex: nodejs, python) |
 | `command` | string | Não | Comando de inicialização |
 | `memory` | string | Não | Limite de memória: 100, 256, 512, 1024, etc. |
@@ -23,7 +23,7 @@ Envia um arquivo .zip contendo o código do app para ser hospedado na Stackr.
 curl -X POST "https://api.stackr.lat/apps/upload" \
   -H "Authorization: Bearer SEU_API_TOKEN" \
   -F "file=@meu-app.zip" \
-  -F "botName=Meu App" \
+  -F "appName=Meu App" \
   -F "language=nodejs" \
   -F "command=npm start" \
   -F "memory=256" \
@@ -34,7 +34,7 @@ curl -X POST "https://api.stackr.lat/apps/upload" \
 
 ```json
 {
-  "botId": "123e4567-e89b-12d3-a456-426614174000",
+  "appId": "123e4567-e89b-12d3-a456-426614174000",
   "message": "App uploaded successfully. Building...",
   "status": "RUNNING"
 }

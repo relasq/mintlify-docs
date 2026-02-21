@@ -1,10 +1,10 @@
 ---
 title: "Ligar app"
-description: "Inicia a execução de um bot"
+description: "Inicia a execução de um app"
 openapi: POST /apps/{id}/start
 ---
 
-Inicia a execução de um app que está parado.
+Inicia a execução de um app.
 
 ## Parâmetros de path
 
@@ -23,6 +23,6 @@ curl -X POST "https://api.stackr.lat/apps/app_abc123/start" \
 
 ```json
 {
-  "message": "Bot started successfully"
+  "message": "App started successfully"
 }
 ```
