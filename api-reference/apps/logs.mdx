@@ -1,0 +1,42 @@
+---
+title: "Logs do app"
+description: "Retorna os últimos logs de execução do app"
+openapi: GET /apps/{id}/logs
+---
+
+Retorna os últimos logs de execução do app para diagnóstico e debugging.
+
+## Parâmetros de path
+
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-----------|
+| `id` | string | ID único do app |
+
+## Query params
+
+| Parâmetro | Tipo | Padrão | Descrição |
+|-----------|------|--------|-----------|
+| `tail` | integer | 100 | Número de linhas a retornar |
+
+## Exemplo cURL
+
+```bash
+# Últimas 100 linhas (padrão)
+curl -X GET "https://api.stackr.lat/apps/app_abc123/logs" \
+  -H "Authorization: Bearer SEU_API_TOKEN"
+
+# Últimas 500 linhas
+curl -X GET "https://api.stackr.lat/apps/app_abc123/logs?tail=500" \
+  -H "Authorization: Bearer SEU_API_TOKEN"
+```
+
+## Resposta
+
+```json
+{
+  "logs": [
+    "2024-01-01 12:00:01 [INFO] App starting...",
+    "2024-01-01 12:00:02 [INFO] App connected to gateway"
+  ]
+}
+```

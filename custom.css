@@ -1,0 +1,19 @@
+/* Stackr API - Fundo preto com detalhes roxos */
+:root,
+[data-theme="dark"],
+[data-mint-dark="true"] {
+  --mint-bg-primary: #050508 !important;
+  --mint-bg-secondary: #0a0a0f !important;
+  --mint-bg-tertiary: #0d0d14 !important;
+  --background: #050508 !important;
+  --background-secondary: #0a0a0f !important;
+}
+body,
+html,
+.mdc-main-wrapper,
+.main-content-wrapper,
+[class*="mdc-"],
+[class*="sidebar"],
+[class*="content"] {
+  background-color: #050508 !important;
+}

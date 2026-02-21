@@ -1,0 +1,40 @@
+---
+title: "Escrever arquivo"
+description: "Cria ou sobrescreve o conteúdo de um arquivo"
+openapi: PUT /apps/{id}/files/content
+---
+
+Cria ou sobrescreve o conteúdo de um arquivo no sistema de arquivos do app.
+
+## Parâmetros de path
+
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-----------|
+| `id` | string | ID único do app |
+
+## Body (JSON)
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|-----------|
+| `path` | string | Sim | Caminho do arquivo |
+| `content` | string | Sim | Conteúdo do arquivo |
+
+## Exemplo cURL
+
+```bash
+curl -X PUT "https://api.stackr.lat/apps/app_abc123/files/content" \
+  -H "Authorization: Bearer SEU_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "path": "/app/config.json",
+    "content": "{\"key\": \"value\"}"
+  }'
+```
+
+## Resposta
+
+```json
+{
+  "success": true
+}
+```

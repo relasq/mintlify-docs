@@ -1,0 +1,18 @@
+---
+title: "Listar compras"
+description: "Histórico de compras do usuário"
+openapi: GET /plans/purchases
+---
+
+Retorna o histórico de compras do usuário.
+
+## Exemplo cURL
+
+```bash
+curl -X GET "https://api.stackr.lat/plans/purchases" \
+  -H "Authorization: Bearer SEU_API_TOKEN"
+```
+
+## Resposta
+
+Array de objetos com histórico de compras (transações, datas, valores).

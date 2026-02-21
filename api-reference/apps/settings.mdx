@@ -1,0 +1,44 @@
+---
+title: "Atualizar configurações"
+description: "Atualiza nome, memória ou comando de inicialização do app"
+openapi: PATCH /apps/{id}/settings
+---
+
+Atualiza as configurações do app: nome, memória ou comando de inicialização.
+
+## Parâmetros de path
+
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-----------|
+| `id` | string | ID único do app |
+
+## Body (JSON)
+
+| Campo | Tipo | Descrição |
+|-------|------|-----------|
+| `name` | string | Novo nome do app |
+| `memoryMb` | integer | Memória em MB: 100, 256, 512, 1024 |
+| `command` | string | Novo comando de inicialização |
+
+## Exemplo cURL
+
+```bash
+curl -X PATCH "https://api.stackr.lat/apps/app_abc123/settings" \
+  -H "Authorization: Bearer SEU_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Novo Nome",
+    "memoryMb": 512,
+    "command": "node index.js"
+  }'
+```
+
+## Resposta
+
+```json
+{
+  "id": "123e4567-e89b-12d3-a456-426614174000",
+  "name": "Novo Nome",
+  "memoryMb": 512
+}
+```

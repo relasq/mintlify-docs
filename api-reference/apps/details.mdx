@@ -1,0 +1,31 @@
+---
+title: "Detalhes do app"
+description: "Retorna informações detalhadas de um app"
+openapi: GET /apps/{id}
+---
+
+Retorna informações detalhadas de um app.
+
+## Parâmetros de path
+
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-----------|
+| `id` | string | ID único do app |
+
+## Exemplo cURL
+
+```bash
+curl -X GET "https://api.stackr.lat/apps/app_abc123" \
+  -H "Authorization: Bearer SEU_API_TOKEN"
+```
+
+## Resposta
+
+```json
+{
+  "id": "123e4567-e89b-12d3-a456-426614174000",
+  "status": "RUNNING",
+  "logs": "...",
+  "oomKilled": false
+}
+```

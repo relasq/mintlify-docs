@@ -1,0 +1,35 @@
+---
+title: "Listar arquivos"
+description: "Lista arquivos e pastas em um diretório do app"
+openapi: GET /apps/{id}/files
+---
+
+Lista arquivos e pastas em um diretório do sistema de arquivos do app.
+
+## Parâmetros de path
+
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-----------|
+| `id` | string | ID único do app |
+
+## Query params
+
+| Parâmetro | Tipo | Obrigatório | Descrição |
+|-----------|------|-------------|-----------|
+| `path` | string | Sim | Caminho do diretório (ex: /app) |
+
+## Exemplo cURL
+
+```bash
+curl -X GET "https://api.stackr.lat/apps/app_abc123/files?path=/app" \
+  -H "Authorization: Bearer SEU_API_TOKEN"
+```
+
+## Resposta
+
+```json
+[
+  {"name": "index.js", "type": "file", "size": 1024},
+  {"name": "lib", "type": "directory"}
+]
+```

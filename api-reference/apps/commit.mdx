@@ -1,0 +1,35 @@
+---
+title: "Commit/atualizar código"
+description: "Atualiza o código fonte do app enviando um novo .zip"
+openapi: POST /apps/{id}/commit
+---
+
+Atualiza o código fonte do app enviando um novo arquivo .zip. Substitui o código anterior.
+
+## Parâmetros de path
+
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-----------|
+| `id` | string | ID único do app |
+
+## Body (multipart/form-data)
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|-----------|
+| `file` | Arquivo | Sim | Arquivo .zip com o novo código |
+
+## Exemplo cURL
+
+```bash
+curl -X POST "https://api.stackr.lat/apps/app_abc123/commit" \
+  -H "Authorization: Bearer SEU_API_TOKEN" \
+  -F "file=@nova-versao.zip"
+```
+
+## Resposta
+
+```json
+{
+  "message": "Code updated. Rebuilding app..."
+}
+```

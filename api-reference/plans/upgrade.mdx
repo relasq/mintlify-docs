@@ -1,0 +1,30 @@
+---
+title: "Upgrade de plano"
+description: "Realiza upgrade para nova quantidade total de memória"
+openapi: POST /plans/upgrade
+---
+
+Realiza o upgrade para uma nova quantidade total de memória.
+
+## Body (JSON)
+
+| Campo | Tipo | Descrição |
+|-------|------|-----------|
+| `targetMemoryMb` | integer | Nova quantidade total de memória em MB |
+| `duration` | string | Período: `monthly` ou `yearly` |
+
+## Exemplo cURL
+
+```bash
+curl -X POST "https://api.stackr.lat/plans/upgrade" \
+  -H "Authorization: Bearer SEU_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "targetMemoryMb": 2048,
+    "duration": "monthly"
+  }'
+```
+
+## Resposta
+
+Retorna os dados da transação PIX para pagamento do upgrade.

@@ -1,0 +1,18 @@
+---
+title: "Configuração de preços"
+description: "Retorna valores base para memória e descontos por duração"
+openapi: GET /plans/config
+---
+
+Retorna os valores base para memória e descontos por duração (monthly/yearly).
+
+## Exemplo cURL
+
+```bash
+curl -X GET "https://api.stackr.lat/plans/config" \
+  -H "Authorization: Bearer SEU_API_TOKEN"
+```
+
+## Resposta
+
+Retorna a configuração de preços com valores para cada quantidade de memória e duração.

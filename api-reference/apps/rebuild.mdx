@@ -1,0 +1,28 @@
+---
+title: "Reconstruir app"
+description: "Reconstrói o container do zero usando a imagem base"
+openapi: POST /apps/{id}/rebuild
+---
+
+Reconstrói o container do app do zero usando a imagem base. Útil para resolver problemas de build ou ambiente corrompido.
+
+## Parâmetros de path
+
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-----------|
+| `id` | string | ID único do app |
+
+## Exemplo cURL
+
+```bash
+curl -X POST "https://api.stackr.lat/apps/app_abc123/rebuild" \
+  -H "Authorization: Bearer SEU_API_TOKEN"
+```
+
+## Resposta
+
+```json
+{
+  "message": "App rebuilding..."
+}
+```
