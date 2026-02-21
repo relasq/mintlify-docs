@@ -1,29 +1,25 @@
 ---
-title: "Criar backup"
-description: "Cria um backup do estado atual do bot"
-openapi: POST /bots/{id}/backup
+title: "Criar e baixar backup"
+description: "Gera backup em tempo real e inicia download via streaming"
+openapi: POST /apps/{id}/backup
 ---
 
-Cria um backup do estado atual do bot, incluindo código e dados.
+Gera um backup em tempo real do app e inicia o download via streaming. O arquivo não é mantido no servidor.
 
 ## Parâmetros de path
 
 | Parâmetro | Tipo | Descrição |
 |-----------|------|-----------|
-| `id` | string | ID único do bot |
+| `id` | string | ID único do app |
 
 ## Exemplo cURL
 
 ```bash
-curl -X POST "https://api.stackr.lat/bots/bot_abc123/backup" \
-  -H "Authorization: Bearer SEU_API_TOKEN"
+curl -X POST "https://api.stackr.lat/apps/app_abc123/backup" \
+  -H "Authorization: Bearer SEU_API_TOKEN" \
+  -o backup.zip
 ```
 
 ## Resposta
 
-```json
-{
-  "backupId": "backup-uuid-1234",
-  "fileName": "backup-bot-2024.zip"
-}
-```
+Retorna o arquivo .zip diretamente via streaming. Use `-o` para salvar em disco.

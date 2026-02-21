@@ -1,29 +1,29 @@
 ---
 title: "Atualizar configurações"
-description: "Atualiza nome, memória ou comando de inicialização do bot"
-openapi: PATCH /bots/{id}/settings
+description: "Atualiza nome, memória ou comando de inicialização do app"
+openapi: PATCH /apps/{id}/settings
 ---
 
-Atualiza as configurações do bot: nome, memória ou comando de inicialização.
+Atualiza as configurações do app: nome, memória ou comando de inicialização.
 
 ## Parâmetros de path
 
 | Parâmetro | Tipo | Descrição |
 |-----------|------|-----------|
-| `id` | string | ID único do bot |
+| `id` | string | ID único do app |
 
 ## Body (JSON)
 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
-| `name` | string | Novo nome do bot |
+| `name` | string | Novo nome do app |
 | `memoryMb` | integer | Memória em MB: 100, 256, 512, 1024 |
 | `command` | string | Novo comando de inicialização |
 
 ## Exemplo cURL
 
 ```bash
-curl -X PATCH "https://api.stackr.lat/bots/bot_abc123/settings" \
+curl -X PATCH "https://api.stackr.lat/apps/app_abc123/settings" \
   -H "Authorization: Bearer SEU_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{

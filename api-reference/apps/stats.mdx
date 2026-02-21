@@ -1,21 +1,21 @@
 ---
 title: "Estatísticas em tempo real"
 description: "Retorna CPU, RAM e uso de rede em tempo real"
-openapi: GET /bots/{id}/stats
+openapi: GET /apps/{id}/stats
 ---
 
-Retorna métricas em tempo real do bot: CPU, RAM e rede.
+Retorna métricas em tempo real do app: CPU, RAM e rede.
 
 ## Parâmetros de path
 
 | Parâmetro | Tipo | Descrição |
 |-----------|------|-----------|
-| `id` | string | ID único do bot |
+| `id` | string | ID único do app |
 
 ## Exemplo cURL
 
 ```bash
-curl -X GET "https://api.stackr.lat/bots/bot_abc123/stats" \
+curl -X GET "https://api.stackr.lat/apps/app_abc123/stats" \
   -H "Authorization: Bearer SEU_API_TOKEN"
 ```
 

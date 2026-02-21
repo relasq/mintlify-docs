@@ -1,21 +1,21 @@
 ---
 title: "Confirmar notificação OOM"
 description: "Marca que o usuário já viu o aviso de falta de memória"
-openapi: POST /bots/{id}/oom-notified
+openapi: POST /apps/{id}/oom-notified
 ---
 
-Marca que o usuário já visualizou o aviso de Out of Memory (falta de memória) do bot.
+Marca que o usuário já visualizou o aviso de Out of Memory (falta de memória) do app.
 
 ## Parâmetros de path
 
 | Parâmetro | Tipo | Descrição |
 |-----------|------|-----------|
-| `id` | string | ID único do bot |
+| `id` | string | ID único do app |
 
 ## Exemplo cURL
 
 ```bash
-curl -X POST "https://api.stackr.lat/bots/bot_abc123/oom-notified" \
+curl -X POST "https://api.stackr.lat/apps/app_abc123/oom-notified" \
   -H "Authorization: Bearer SEU_API_TOKEN"
 ```
 

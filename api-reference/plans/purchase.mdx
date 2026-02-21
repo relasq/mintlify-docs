@@ -12,6 +12,7 @@ Comprar um novo plano. Retorna dados do PIX para pagamento (QR Code e copia e co
 |-------|------|-----------|
 | `memoryMb` | integer | Memória em MB (ex: 512) |
 | `duration` | string | Período: `monthly` ou `yearly` |
+| `quantity` | integer | Quantidade (padrão: 1) |
 | `payerName` | string | Nome do pagador |
 | `payerDocument` | string | CPF/CNPJ do pagador |
 
@@ -24,6 +25,7 @@ curl -X POST "https://api.stackr.lat/plans/purchase" \
   -d '{
     "memoryMb": 512,
     "duration": "monthly",
+    "quantity": 1,
     "payerName": "João Silva",
     "payerDocument": "12345678900"
   }'

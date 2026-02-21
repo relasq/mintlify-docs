@@ -3,7 +3,7 @@
   "theme": "mint",
   "mode": "dark",
   "name": "Stackr API",
-  "description": "Documentação da API Stackr - Hospede, gerencie e faça backup dos seus bots",
+  "description": "Documentação da API Stackr - Hospede, gerencie e faça backup dos seus apps",
   "colors": {
     "primary": "#8b5cf6",
     "light": "#a78bfa",
@@ -37,34 +37,34 @@
           },
           {
             "group": "Hospedagem e Upload",
-            "pages": ["api-reference/bots/upload"]
+            "pages": ["api-reference/apps/upload"]
           },
           {
-            "group": "Controle de Bots",
+            "group": "Controle de Apps",
             "pages": [
-              "api-reference/bots/list",
-              "api-reference/bots/details",
-              "api-reference/bots/stats",
-              "api-reference/bots/start",
-              "api-reference/bots/stop",
-              "api-reference/bots/restart",
-              "api-reference/bots/rebuild",
-              "api-reference/bots/delete",
-              "api-reference/bots/commit",
-              "api-reference/bots/oom-notified",
-              "api-reference/bots/logs"
+              "api-reference/apps/list",
+              "api-reference/apps/details",
+              "api-reference/apps/stats",
+              "api-reference/apps/start",
+              "api-reference/apps/stop",
+              "api-reference/apps/restart",
+              "api-reference/apps/rebuild",
+              "api-reference/apps/delete",
+              "api-reference/apps/commit",
+              "api-reference/apps/oom-notified",
+              "api-reference/apps/logs"
             ]
           },
           {
             "group": "Configurações e Arquivos",
             "pages": [
-              "api-reference/bots/settings",
-              "api-reference/bots/files-list",
-              "api-reference/bots/files-read",
-              "api-reference/bots/files-write",
-              "api-reference/bots/files-rename",
-              "api-reference/bots/files-mkdir",
-              "api-reference/bots/files-delete"
+              "api-reference/apps/settings",
+              "api-reference/apps/files-list",
+              "api-reference/apps/files-read",
+              "api-reference/apps/files-write",
+              "api-reference/apps/files-rename",
+              "api-reference/apps/files-mkdir",
+              "api-reference/apps/files-delete"
             ]
           },
           {
@@ -78,6 +78,7 @@
           {
             "group": "Planos e Pagamentos",
             "pages": [
+              "api-reference/plans/config",
               "api-reference/plans/current",
               "api-reference/plans/expiring",
               "api-reference/plans/purchase",

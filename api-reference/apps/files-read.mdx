@@ -1,16 +1,16 @@
 ---
 title: "Ler arquivo"
 description: "Retorna o conteúdo de um arquivo específico"
-openapi: GET /bots/{id}/files/content
+openapi: GET /apps/{id}/files/content
 ---
 
-Retorna o conteúdo de um arquivo específico do sistema de arquivos do bot.
+Retorna o conteúdo de um arquivo específico do sistema de arquivos do app.
 
 ## Parâmetros de path
 
 | Parâmetro | Tipo | Descrição |
 |-----------|------|-----------|
-| `id` | string | ID único do bot |
+| `id` | string | ID único do app |
 
 ## Query params
 
@@ -21,7 +21,7 @@ Retorna o conteúdo de um arquivo específico do sistema de arquivos do bot.
 ## Exemplo cURL
 
 ```bash
-curl -X GET "https://api.stackr.lat/bots/bot_abc123/files/content?path=/app/index.js" \
+curl -X GET "https://api.stackr.lat/apps/app_abc123/files/content?path=/app/index.js" \
   -H "Authorization: Bearer SEU_API_TOKEN"
 ```
 

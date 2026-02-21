@@ -1,21 +1,21 @@
 ---
-title: "Desligar bot"
+title: "Desligar app"
 description: "Para a execução de um bot"
-openapi: POST /bots/{id}/stop
+openapi: POST /apps/{id}/stop
 ---
 
-Para a execução de um bot em execução.
+Para a execução de um app em execução.
 
 ## Parâmetros de path
 
 | Parâmetro | Tipo | Descrição |
 |-----------|------|-----------|
-| `id` | string | ID único do bot |
+| `id` | string | ID único do app |
 
 ## Exemplo cURL
 
 ```bash
-curl -X POST "https://api.stackr.lat/bots/bot_abc123/stop" \
+curl -X POST "https://api.stackr.lat/apps/app_abc123/stop" \
   -H "Authorization: Bearer SEU_API_TOKEN"
 ```
 

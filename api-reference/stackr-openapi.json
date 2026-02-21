@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Stackr API",
-    "description": "API para hospedar, gerenciar, ligar/desligar e fazer backups de bots.",
+    "description": "API para hospedar, gerenciar, ligar/desligar e fazer backups de apps.",
     "version": "1.0.0"
   },
   "servers": [
@@ -29,10 +29,10 @@
       "Bot": {
         "type": "object",
         "properties": {
-          "id": { "type": "string", "description": "ID único do bot" },
-          "name": { "type": "string", "description": "Nome do bot" },
+          "id": { "type": "string", "description": "ID único do app" },
+          "name": { "type": "string", "description": "Nome do app" },
           "status": { "type": "string", "description": "Status atual (running, stopped)" },
-          "language": { "type": "string", "description": "Linguagem do bot" },
+          "language": { "type": "string", "description": "Linguagem do app" },
           "memoryMb": { "type": "integer", "description": "Memória alocada em MB" },
           "command": { "type": "string", "description": "Comando de inicialização" },
           "createdAt": { "type": "string", "format": "date-time" },
@@ -43,7 +43,7 @@
         "type": "object",
         "properties": {
           "id": { "type": "string", "description": "ID do backup" },
-          "botId": { "type": "string", "description": "ID do bot" },
+          "botId": { "type": "string", "description": "ID do backup" },
           "createdAt": { "type": "string", "format": "date-time" },
           "size": { "type": "integer", "description": "Tamanho em bytes" }
         }
@@ -51,10 +51,10 @@
     }
   },
   "paths": {
-    "/bots/upload": {
+    "/apps/upload": {
       "post": {
-        "summary": "Upload de novo bot",
-        "description": "Envia um arquivo .zip contendo o código do bot para ser hospedado.",
+        "summary": "Upload de novo app",
+        "description": "Envia um arquivo .zip contendo o código do app para ser hospedado.",
         "security": [{"bearerAuth": []}],
         "requestBody": {
           "required": true,
@@ -71,11 +71,11 @@
                   },
                   "botName": {
                     "type": "string",
-                    "description": "Nome do bot (Opcional)"
+                    "description": "Nome do app (Opcional)"
                   },
                   "language": {
                     "type": "string",
-                    "description": "Linguagem do bot (ex: nodejs, python)"
+                    "description": "Linguagem do app (ex: nodejs, python)"
                   },
                   "command": {
                     "type": "string",
@@ -83,8 +83,11 @@
                   },
                   "memory": {
                     "type": "string",
-                    "enum": ["100MB", "256MB", "512MB"],
-                    "description": "Limite de memória"
+                    "description": "Limite de memória: 100, 256, 512, 1024, etc."
+                  },
+                  "slug": {
+                    "type": "string",
+                    "description": "Slug único para APIs (ex: meu-app)"
                   }
                 }
               }
@@ -92,102 +95,102 @@
           }
         },
         "responses": {
-          "200": { "description": "Bot criado com sucesso" },
+          "200": { "description": "App criado com sucesso" },
           "401": { "description": "Não autorizado" },
           "400": { "description": "Requisição inválida" }
         }
       }
     },
-    "/bots": {
+    "/apps": {
       "get": {
-        "summary": "Listar bots",
-        "description": "Retorna todos os bots do usuário.",
+        "summary": "Listar apps",
+        "description": "Retorna todos os apps do usuário.",
         "security": [{"bearerAuth": []}],
         "responses": {
-          "200": { "description": "Lista de bots" },
+          "200": { "description": "Lista de apps" },
           "401": { "description": "Não autorizado" }
         }
       }
     },
-    "/bots/{id}": {
+    "/apps/{id}": {
       "get": {
-        "summary": "Detalhes do bot",
-        "description": "Retorna informações detalhadas de um bot específico.",
+        "summary": "Detalhes do app",
+        "description": "Retorna informações detalhadas de um app específico.",
         "security": [{"bearerAuth": []}],
         "parameters": [
           { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
         ],
         "responses": {
-          "200": { "description": "Detalhes do bot" },
+          "200": { "description": "Detalhes do app" },
           "401": { "description": "Não autorizado" },
-          "404": { "description": "Bot não encontrado" }
+          "404": { "description": "App não encontrado" }
         }
       }
     },
-    "/bots/{id}/start": {
+    "/apps/{id}/start": {
       "post": {
-        "summary": "Ligar bot",
-        "description": "Inicia a execução de um bot.",
+        "summary": "Ligar app",
+        "description": "Inicia a execução de um app.",
         "security": [{"bearerAuth": []}],
         "parameters": [
           { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
         ],
         "responses": {
-          "200": { "description": "Bot iniciado" },
+          "200": { "description": "App iniciado" },
           "401": { "description": "Não autorizado" },
-          "404": { "description": "Bot não encontrado" }
+          "404": { "description": "App não encontrado" }
         }
       }
     },
-    "/bots/{id}/stop": {
+    "/apps/{id}/stop": {
       "post": {
-        "summary": "Desligar bot",
-        "description": "Para a execução de um bot.",
+        "summary": "Desligar app",
+        "description": "Para a execução de um app.",
         "security": [{"bearerAuth": []}],
         "parameters": [
           { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
         ],
         "responses": {
-          "200": { "description": "Bot parado" },
+          "200": { "description": "App parado" },
           "401": { "description": "Não autorizado" },
-          "404": { "description": "Bot não encontrado" }
+          "404": { "description": "App não encontrado" }
         }
       }
     },
-    "/bots/{id}/restart": {
+    "/apps/{id}/restart": {
       "post": {
-        "summary": "Reiniciar bot",
-        "description": "Reinicia um bot em execução.",
+        "summary": "Reiniciar app",
+        "description": "Reinicia um app em execução.",
         "security": [{"bearerAuth": []}],
         "parameters": [
           { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
         ],
         "responses": {
-          "200": { "description": "Bot reiniciado" },
+          "200": { "description": "App reiniciado" },
           "401": { "description": "Não autorizado" },
-          "404": { "description": "Bot não encontrado" }
+          "404": { "description": "App não encontrado" }
         }
       }
     },
-    "/bots/{id}/delete": {
+    "/apps/{id}/delete": {
       "post": {
-        "summary": "Deletar bot",
-        "description": "Remove permanentemente um bot e seus dados.",
+        "summary": "Deletar app",
+        "description": "Remove permanentemente um app e seus dados.",
         "security": [{"bearerAuth": []}],
         "parameters": [
           { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
         ],
         "responses": {
-          "200": { "description": "Bot deletado" },
+          "200": { "description": "App deletado" },
           "401": { "description": "Não autorizado" },
-          "404": { "description": "Bot não encontrado" }
+          "404": { "description": "App não encontrado" }
         }
       }
     },
-    "/bots/{id}/commit": {
+    "/apps/{id}/commit": {
       "post": {
         "summary": "Commit/atualizar código",
-        "description": "Atualiza o código fonte do bot enviando um novo .zip.",
+        "description": "Atualiza o código fonte do app enviando um novo .zip.",
         "security": [{"bearerAuth": []}],
         "parameters": [
           { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
@@ -209,30 +212,30 @@
         "responses": {
           "200": { "description": "Código atualizado" },
           "401": { "description": "Não autorizado" },
-          "404": { "description": "Bot não encontrado" }
+          "404": { "description": "App não encontrado" }
         }
       }
     },
-    "/bots/{id}/logs": {
+    "/apps/{id}/logs": {
       "get": {
-        "summary": "Logs do bot",
-        "description": "Retorna os últimos logs de execução do bot.",
+        "summary": "Logs do app",
+        "description": "Retorna os últimos logs de execução do app.",
         "security": [{"bearerAuth": []}],
         "parameters": [
           { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } },
           { "name": "tail", "in": "query", "schema": { "type": "integer", "default": 100 }, "description": "Número de linhas (padrão: 100)" }
         ],
         "responses": {
-          "200": { "description": "Logs do bot" },
+          "200": { "description": "Logs do app" },
           "401": { "description": "Não autorizado" },
-          "404": { "description": "Bot não encontrado" }
+          "404": { "description": "App não encontrado" }
         }
       }
     },
-    "/bots/{id}/settings": {
+    "/apps/{id}/settings": {
       "patch": {
         "summary": "Atualizar configurações",
-        "description": "Atualiza nome, memória ou comando de inicialização do bot.",
+        "description": "Atualiza nome, memória ou comando de inicialização do app.",
         "security": [{"bearerAuth": []}],
         "parameters": [
           { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
@@ -254,14 +257,14 @@
         "responses": {
           "200": { "description": "Configurações atualizadas" },
           "401": { "description": "Não autorizado" },
-          "404": { "description": "Bot não encontrado" }
+          "404": { "description": "App não encontrado" }
         }
       }
     },
-    "/bots/{id}/files": {
+    "/apps/{id}/files": {
       "get": {
         "summary": "Listar arquivos",
-        "description": "Lista arquivos e pastas em um diretório do bot.",
+        "description": "Lista arquivos e pastas em um diretório do app.",
         "security": [{"bearerAuth": []}],
         "parameters": [
           { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } },
@@ -270,11 +273,11 @@
         "responses": {
           "200": { "description": "Lista de arquivos" },
           "401": { "description": "Não autorizado" },
-          "404": { "description": "Bot não encontrado" }
+          "404": { "description": "App não encontrado" }
         }
       }
     },
-    "/bots/{id}/files/content": {
+    "/apps/{id}/files/content": {
       "get": {
         "summary": "Ler arquivo",
         "description": "Retorna o conteúdo de um arquivo específico.",
@@ -314,14 +317,14 @@
         "responses": {
           "200": { "description": "Arquivo escrito" },
           "401": { "description": "Não autorizado" },
-          "404": { "description": "Bot não encontrado" }
+          "404": { "description": "App não encontrado" }
         }
       }
     },
-    "/bots/{id}/files/mkdir": {
+    "/apps/{id}/files/mkdir": {
       "post": {
         "summary": "Criar pasta",
-        "description": "Cria uma nova pasta no sistema de arquivos do bot.",
+        "description": "Cria uma nova pasta no sistema de arquivos do app.",
         "security": [{"bearerAuth": []}],
         "parameters": [
           { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
@@ -343,11 +346,11 @@
         "responses": {
           "200": { "description": "Pasta criada" },
           "401": { "description": "Não autorizado" },
-          "404": { "description": "Bot não encontrado" }
+          "404": { "description": "App não encontrado" }
         }
       }
     },
-    "/bots/{id}/files/delete": {
+    "/apps/{id}/files/delete": {
       "post": {
         "summary": "Deletar arquivo",
         "description": "Remove um arquivo ou pasta.",
@@ -372,14 +375,14 @@
         "responses": {
           "200": { "description": "Arquivo deletado" },
           "401": { "description": "Não autorizado" },
-          "404": { "description": "Bot não encontrado" }
+          "404": { "description": "App não encontrado" }
         }
       }
     },
-    "/bots/{id}/backup": {
+    "/apps/{id}/backup": {
       "post": {
         "summary": "Criar backup",
-        "description": "Cria um backup do estado atual do bot.",
+        "description": "Gera backup em tempo real e inicia download via streaming. Arquivo não mantido no servidor.",
         "security": [{"bearerAuth": []}],
         "parameters": [
           { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
@@ -387,7 +390,7 @@
         "responses": {
           "200": { "description": "Backup criado" },
           "401": { "description": "Não autorizado" },
-          "404": { "description": "Bot não encontrado" }
+          "404": { "description": "App não encontrado" }
         }
       }
     },
@@ -446,34 +449,34 @@
         "responses": { "200": { "description": "Perfil atualizado" }, "401": { "description": "Não autorizado" } }
       }
     },
-    "/bots/{id}/stats": {
+    "/apps/{id}/stats": {
       "get": {
         "summary": "Estatísticas em tempo real",
         "description": "CPU, RAM e rede.",
         "security": [{"bearerAuth": []}],
         "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
-        "responses": { "200": { "description": "Métricas" }, "401": { "description": "Não autorizado" }, "404": { "description": "Bot não encontrado" } }
+        "responses": { "200": { "description": "Métricas" }, "401": { "description": "Não autorizado" }, "404": { "description": "App não encontrado" } }
       }
     },
-    "/bots/{id}/rebuild": {
+    "/apps/{id}/rebuild": {
       "post": {
-        "summary": "Reconstruir bot",
+        "summary": "Reconstruir app",
         "description": "Reconstrói o container do zero.",
         "security": [{"bearerAuth": []}],
         "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
-        "responses": { "200": { "description": "Rebuilding" }, "401": { "description": "Não autorizado" }, "404": { "description": "Bot não encontrado" } }
+        "responses": { "200": { "description": "Rebuilding" }, "401": { "description": "Não autorizado" }, "404": { "description": "App não encontrado" } }
       }
     },
-    "/bots/{id}/oom-notified": {
+    "/apps/{id}/oom-notified": {
       "post": {
         "summary": "Confirmar notificação OOM",
         "description": "Marca aviso de memória como visualizado.",
         "security": [{"bearerAuth": []}],
         "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
-        "responses": { "200": { "description": "Confirmado" }, "401": { "description": "Não autorizado" }, "404": { "description": "Bot não encontrado" } }
+        "responses": { "200": { "description": "Confirmado" }, "401": { "description": "Não autorizado" }, "404": { "description": "App não encontrado" } }
       }
     },
-    "/bots/{id}/files/rename": {
+    "/apps/{id}/files/rename": {
       "put": {
         "summary": "Renomear arquivo",
         "description": "Renomeia arquivo ou pasta.",
@@ -487,7 +490,15 @@
             }
           }
         },
-        "responses": { "200": { "description": "Renomeado" }, "401": { "description": "Não autorizado" }, "404": { "description": "Bot não encontrado" } }
+        "responses": { "200": { "description": "Renomeado" }, "401": { "description": "Não autorizado" }, "404": { "description": "App não encontrado" } }
+      }
+    },
+    "/plans/config": {
+      "get": {
+        "summary": "Configuração de preços",
+        "description": "Valores base para memória e descontos por duração.",
+        "security": [{"bearerAuth": []}],
+        "responses": { "200": { "description": "Config preços" }, "401": { "description": "Não autorizado" } }
       }
     },
     "/plans": {
@@ -521,6 +532,7 @@
                 "properties": {
                   "memoryMb": { "type": "integer" },
                   "duration": { "type": "string", "enum": ["monthly", "yearly"] },
+                  "quantity": { "type": "integer", "description": "Quantidade (padrão: 1)" },
                   "payerName": { "type": "string" },
                   "payerDocument": { "type": "string" }
                 }
@@ -556,7 +568,7 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "type": "object", "required": ["additionalMemoryMb", "duration"], "properties": { "additionalMemoryMb": { "type": "integer" }, "duration": { "type": "string", "enum": ["monthly", "yearly"] } } }
+              "schema": { "type": "object", "required": ["targetMemoryMb", "duration"], "properties": { "targetMemoryMb": { "type": "integer" }, "duration": { "type": "string", "enum": ["monthly", "yearly"] } } }
             }
           }
         },
